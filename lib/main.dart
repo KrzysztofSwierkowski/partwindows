@@ -1,6 +1,8 @@
+import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:partwindows/MainNav.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
-import 'mainui.dart';
+
 
 
 
@@ -20,13 +22,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const FluentApp(
+      home: MainNav(),
       title: 'PartBase',
-      theme: ThemeData(
 
-        primarySwatch: Colors.indigo,
-      ),
-      home: const mainui(),
+
     );
   }
 }
