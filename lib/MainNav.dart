@@ -1,5 +1,6 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:partwindows/mainui.dart';
+import 'package:partwindows/BundleCalculator.dart';
 
 class MainNav extends StatefulWidget {
   const MainNav({ Key? key }) : super(key: key);
@@ -29,11 +30,11 @@ class _MainNavState extends State<MainNav> {
             ),
             PaneItem(
                 icon: const Icon(FluentIcons.settings),
-                title: const Text("Settings")
+                title: const Text("Bundle Calculate")
             ),
             PaneItem(
                 icon: const Icon(FluentIcons.settings),
-                title: const Text("mainui")
+                title: const Text("Part Base")
             ),
           ]
       ),
@@ -44,13 +45,14 @@ class _MainNavState extends State<MainNav> {
         children: const <Widget>[
           HomePage(),
           FilesPage(),
-          SettingsPage(),
+          BundleCalculator(),
           mainui(),
         ],
       ),
     );
   }
 }
+
 
 class HomePage extends StatelessWidget {
   const HomePage({ Key? key }) : super(key: key);
@@ -66,9 +68,4 @@ class FilesPage extends StatelessWidget {
   Widget build(BuildContext context) => const Center(child: Text("Files"));
 }
 
-class SettingsPage extends StatelessWidget {
-  const SettingsPage({ Key? key }) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) => const Center(child: Text("Settings"));
-}
