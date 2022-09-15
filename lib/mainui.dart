@@ -10,18 +10,12 @@ class mainui extends StatefulWidget {
 }
 
 class _mainuiState extends State<mainui> {
-
   final dbHelper = DatabaseHelper.instance;
 
-  init(){
-
-
-  }
+  init() {}
 
   List<Part> part = [];
   List<Part> partByName = [];
-
-
 
   TextEditingController typeController = TextEditingController();
   TextEditingController nameController = TextEditingController();
@@ -42,8 +36,6 @@ class _mainuiState extends State<mainui> {
       content: Text(message),
     ));
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -139,9 +131,7 @@ class _mainuiState extends State<mainui> {
                     height: 40,
                     child: Center(
                       child: Text(
-                          '[${part[index].id}] - [${part[index]
-                              .number}] - ${part[index].name} - ${part[index]
-                              .type}',
+                          'Id: ${part[index].id} | Numer: ${part[index].number}] | Nazwa: ${part[index].name} | Typ: ${part[index].type}',
                           style: const TextStyle(fontSize: 18)),
                     ),
                   );
@@ -153,6 +143,7 @@ class _mainuiState extends State<mainui> {
                 children: <Widget>[
                   Container(
                     padding: EdgeInsets.all(20),
+                    height: 100,
                     child: TextField(
                       controller: queryController,
                       decoration: InputDecoration(
@@ -160,7 +151,7 @@ class _mainuiState extends State<mainui> {
                         labelText: 'Part Name',
                       ),
                       onChanged: (text) {
-                        if (text.length >= 2) {
+                        if (text.length >= 1) {
                           setState(() {
                             _query(text);
                           });
@@ -171,7 +162,6 @@ class _mainuiState extends State<mainui> {
                         }
                       },
                     ),
-                    height: 100,
                   ),
                   Container(
                     height: 300,
@@ -184,10 +174,7 @@ class _mainuiState extends State<mainui> {
                           margin: EdgeInsets.all(2),
                           child: Center(
                             child: Text(
-                              '[$partByName[index].id] ${partByName[index]
-                                  .name} -${partByName[index]
-                                  .number} number -${partByName[index]
-                                  .type} type',
+                              'ID: ${partByName[index].id}  | Nazwa: ${partByName[index].name}  | Numer: ${partByName[index].number}  | Typ: ${partByName[index].type} ',
                               style: TextStyle(fontSize: 18),
                             ),
                           ),
@@ -305,11 +292,8 @@ class _mainuiState extends State<mainui> {
     part.clear();
     allRows.forEach((row) => part.add(Part.fromMap(row)));
     _showMessageInScaffold('Gotowe !');
-    setState(() {
-
-    });
+    setState(() {});
   }
-
 
   _query(name) async {
     final allRows = await dbHelper.queryRows(name);
@@ -322,5 +306,4 @@ class _mainuiState extends State<mainui> {
     final rowsAffected = await dbHelper.update(part);
     _showMessageInScaffold('Część $rowsAffected została zaktualizowana');
   }
-
 }

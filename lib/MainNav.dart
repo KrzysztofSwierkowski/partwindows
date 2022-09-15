@@ -1,6 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:partwindows/mainui.dart';
 import 'package:partwindows/BundleCalculator.dart';
+import 'read_data.dart';
 
 class MainNav extends StatefulWidget {
   const MainNav({ Key? key }) : super(key: key);
@@ -25,15 +26,15 @@ class _MainNavState extends State<MainNav> {
                 title: const Text("Home")
             ),
             PaneItem(
-                icon: const Icon(FluentIcons.fabric_folder),
-                title: const Text("Files")
+                icon: const Icon(FluentIcons.database),
+                title: const Text("Wszystkie rekordy z bazy danych")
             ),
             PaneItem(
-                icon: const Icon(FluentIcons.settings),
+                icon: const Icon(FluentIcons.calculated_table),
                 title: const Text("Bundle Calculate")
             ),
             PaneItem(
-                icon: const Icon(FluentIcons.settings),
+                icon: const Icon(FluentIcons.database_view),
                 title: const Text("Part Base")
             ),
           ]
@@ -44,7 +45,7 @@ class _MainNavState extends State<MainNav> {
         transitionBuilder: (child, animation) => EntrancePageTransition(child: child, animation: animation),
         children: const <Widget>[
           HomePage(),
-          FilesPage(),
+          ReadData(),
           BundleCalculator(),
           mainui(),
         ],
