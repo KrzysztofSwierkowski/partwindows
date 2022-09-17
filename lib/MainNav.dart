@@ -31,7 +31,7 @@ class _MainNavState extends State<MainNav> {
             ),
             PaneItem(
                 icon: const Icon(FluentIcons.calculated_table),
-                title: const Text("Bundle Calculate")
+                title: const Text("Przekrój wiązki")
             ),
             PaneItem(
                 icon: const Icon(FluentIcons.database_view),

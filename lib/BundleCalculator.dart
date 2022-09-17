@@ -8,29 +8,58 @@ class BundleCalculator extends StatefulWidget {
 }
 
 class _BundleCalculatorState extends State<BundleCalculator> {
-
   final calculateBox = TextEditingController();
+  List<TextEditingController> _dimControllers = [];
+  List<TextBox> _dimFields = [];
+  List<TextEditingController> _countControllers = [];
+  List<TextBox> _countFields = [];
+  final dim = _dimControllers[1].text;
+  final count = _countControllers[1].text;
 
 
-  init(){
-
-
-  }
+  init() {}
 
   @override
-  Widget build(BuildContext context) =>  Center(child: Column(
-      children: <Widget>[
-  Container(
-    padding: EdgeInsets.all(20),
-    child: TextBox(
-      controller: calculateBox,
-      header: 'podaj liczbę żył',
-      placeholder: 'liczba żył',
-      ),
+  Widget build(BuildContext context) => Column(children: <Widget>[
+        Text(
+          'Sekcja liczenia przekroju wiązki',
+          style: TextStyle(fontFamily: 'MonteSerrat', fontSize: 16.0),
+        ),
+        Wrap(children: <Widget>[
+          Padding(padding: EdgeInsets.all(16.0)),
+          Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                Flexible(
+                  child: Text('Wpisz Przekrój'),
+                ),
+                Flexible(
+                  child: Text('Wpisz liczbę przewodów'),
+                ),
+              ]),
+          Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                Flexible(
+                  child: TextBox(
+                    controller: calculateBox,
+                    placeholder: 'przekrój',
+                  ),
+                ),
+                Flexible(
+                  child: TextBox(
+                    controller: calculateBox,
+                    placeholder: 'Liczba przewodów',
+                  ),
+                ),
+              ]),
+        ]),
+    Padding(padding: EdgeInsets.all(16.0)),
+    FilledButton(
+      child: Text('Dodaj przekroje'),
+      onPressed: () {
+        print('pressed filled button');
+      },
     ),
-
-  ]
-  ));
-
-
+      ]);
 }
