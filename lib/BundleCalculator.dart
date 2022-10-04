@@ -1,4 +1,5 @@
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:flutter/foundation.dart';
 
 class BundleCalculator extends StatefulWidget {
   const BundleCalculator({Key? key}) : super(key: key);
@@ -7,9 +8,11 @@ class BundleCalculator extends StatefulWidget {
   State<BundleCalculator> createState() => _BundleCalculatorState();
 }
 
+
 class _GroupControllers {
   TextEditingController dim = TextEditingController();
   TextEditingController count = TextEditingController();
+  TextEditingController finalResultController = TextEditingController();
 
   void dispose() {
     dim.dispose();
@@ -108,9 +111,9 @@ class _BundleCalculatorState extends State<BundleCalculator> {
 // todo: should add support for calculate the cable. Should add  loop to add all dimm
     final button = FilledButton(
       onPressed: () async {
-
+        calculateCross();
       },
-      child: Text("OK"),
+      child: Text("OK34"),
     );
     return Row(
       mainAxisSize: MainAxisSize.max,
@@ -121,8 +124,9 @@ class _BundleCalculatorState extends State<BundleCalculator> {
     );
   }
 
-  TextBox calulateCross() {
+  TextBox calculateCross() {
     var finalResult = 0;
+    final group = _GroupControllers();
     for (var i = 0; i < _groupControllers.length;i++) {
       int countWires = int.parse(_groupControllers[i].count.text);
       int dimWire = int.parse(_groupControllers[i].dim.text);
@@ -130,10 +134,13 @@ class _BundleCalculatorState extends State<BundleCalculator> {
       finalResult = finalResult + sumOfWires;
 
     }
-    print(finalResult);
-    return TextBox(
+    group.finalResultController.text = "";
+    group.finalResultController.text = finalResult.toString();
+
+    print(group.finalResultController.text);
+    return const TextBox(
       readOnly: true,
-      placeholder: 'I am super excited to be here',
+      placeholder: 'group.finalResultController.text',
       style: TextStyle(
         fontFamily: 'Arial',
         fontSize: 24.0,
@@ -148,11 +155,14 @@ class _BundleCalculatorState extends State<BundleCalculator> {
     return FilledButton(
        // child: const Text('Oblicz'),
         onPressed: () async {
-          calulateCross();
-          print(calulateCross);
+          calculateCross();
+
+          if (kDebugMode) {
+            print(calculateCross);
+          }
 
         },
-      child: Text("OK"),);
+      child: const Text("OK"),);
   }
 }
 
