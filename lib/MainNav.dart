@@ -15,15 +15,15 @@ class _MainNavState extends State<MainNav> {
 
   @override
   Widget build(BuildContext context) {
+    //todo implement fluent_ui update (4.0.1)
     return NavigationView(
       pane: NavigationPane(
           selected: _currentPage,
           onChanged: (i) => setState(() => _currentPage = i),
-          // displayMode: PaneDisplayMode.top,
           items: <NavigationPaneItem>[
             PaneItem(
                 icon: const Icon(FluentIcons.home),
-                title: const Text("Home")
+                title: const Text("Start")
             ),
             PaneItem(
                 icon: const Icon(FluentIcons.database),
@@ -59,14 +59,9 @@ class HomePage extends StatelessWidget {
   const HomePage({ Key? key }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => const Center(child: Text("Home"));
+  Widget build(BuildContext context) => const Center(child: Text("Aplikacja mająca na celu wsparcie pracy inżyniera"));
 }
 
-class FilesPage extends StatelessWidget {
-  const FilesPage({ Key? key }) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) => const Center(child: Text("Files"));
-}
 
 
