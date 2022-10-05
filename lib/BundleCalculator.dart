@@ -9,12 +9,12 @@ class BundleCalculator extends StatefulWidget {
   State<BundleCalculator> createState() => _BundleCalculatorState();
 }
 
-var result = '';
+
 
 class _GroupControllers {
   TextEditingController dim = TextEditingController();
   TextEditingController count = TextEditingController();
-  TextEditingController resultController = TextEditingController();
+
 
   void dispose() {
     dim.dispose();
@@ -23,11 +23,11 @@ class _GroupControllers {
 }
 
 class _BundleCalculatorState extends State<BundleCalculator> {
-  // final calculateBox = TextEditingController();
+
   List<_GroupControllers> _groupControllers = [];
   List<TextBox> _dimFields = [];
   List<TextBox> _countFields = [];
-  String _textString = ' ';
+  String _textString = '0';
 
   @override
   void dispose() {
@@ -45,27 +45,29 @@ class _BundleCalculatorState extends State<BundleCalculator> {
           style: TextStyle(fontFamily: 'MonteSerrat', fontSize: 24.0),
         ),
         Wrap(children: <Widget>[
-          Container(child: Center(
-            child: Padding(
-              padding: EdgeInsets.all(20),
-              child: _addTitle(),
+          Container(
+            child: Center(
+              child: Padding(
+                padding: EdgeInsets.all(20),
+                child: _addTitle(),
+              ),
             ),
-          ),),
-
-
+          ),
           Container(
             child: Padding(
               padding: EdgeInsets.fromLTRB(100, 20, 100, 20),
               child: Center(child: _listView()),
             ),
           ),
-          Container(child: Center(
-            child: Padding(
-              padding: EdgeInsets.all(20),
-              child: _calculateAll(),
+          Container(
+            child: Center(
+              child: Padding(
+                padding: EdgeInsets.all(20),
+                child: _calculateAll(),
+              ),
             ),
-          ),),
-          _addResult(result),
+          ),
+          _addResult(),
         ]),
       ]);
 
@@ -86,7 +88,7 @@ class _BundleCalculatorState extends State<BundleCalculator> {
         });
   }
 
-  Widget _addResult(result) {
+  Widget _addResult() {
     return Container(
       height: 50,
       margin: EdgeInsets.all(2),
@@ -99,7 +101,7 @@ class _BundleCalculatorState extends State<BundleCalculator> {
     );
   }
 
-  //todo delete fields functionality
+  //todo delete fields functionality and side bar
 
   TextBox _generateTextBox(TextEditingController controller, String hint) {
     return TextBox(
@@ -127,7 +129,7 @@ class _BundleCalculatorState extends State<BundleCalculator> {
 
   double calculateCross() {
     double finalResult = 0;
-    final group = _GroupControllers();
+
     for (var i = 0; i < _groupControllers.length; i++) {
       double countWires = double.parse(_groupControllers[i].count.text);
       double dimWire = double.parse(_groupControllers[i].dim.text);
@@ -135,8 +137,6 @@ class _BundleCalculatorState extends State<BundleCalculator> {
       finalResult = finalResult + sumOfWires;
     }
 
-    var showResult = group.resultController.text;
-    print(finalResult);
     setState(() {
       _textString = finalResult.toString();
     });
@@ -145,11 +145,9 @@ class _BundleCalculatorState extends State<BundleCalculator> {
 
   Widget _calculateAll() {
     return FilledButton(
-      // child: const Text('Oblicz'),
-      onPressed: () async {
-        String abc = calculateCross().toString();
-        print(abc);
-        _addResult(abc);
+        onPressed: () async {
+        calculateCross();
+
       },
       child: const Text("OBLICZ"),
     );
