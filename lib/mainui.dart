@@ -29,10 +29,11 @@ class _mainuiState extends State<mainui> {
   TextEditingController idDeleteController = TextEditingController();
   TextEditingController queryController = TextEditingController();
 
-  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   void _showMessageInScaffold(String message) {
-    _scaffoldKey.currentState?.showSnackBar(SnackBar(
+    ScaffoldMessenger.of(context).showSnackBar( SnackBar(
+
       content: Text(message),
     ));
   }
