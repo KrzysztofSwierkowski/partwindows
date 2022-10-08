@@ -1,4 +1,5 @@
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:fluent_ui/fluent_ui.dart';
 
 class BundleCalculator extends StatefulWidget {
   const BundleCalculator({Key? key}) : super(key: key);
@@ -39,21 +40,30 @@ class _BundleCalculatorState extends State<BundleCalculator> {
           style: TextStyle(fontFamily: 'MonteSerrat', fontSize: 24.0),
         ),
         Wrap(children: <Widget>[
-          Center(
-            child: Padding(
-              padding: const EdgeInsets.all(20),
-              child: _addTitle(),
+          Row(children: <Widget>[
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(5,10,0,10),
+                child: _addTitle(),
+              ),
             ),
-          ),
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(5,10,0,10),
+                child: _deleteTitle(),
+              ),
+            ),
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(5,10,0,10),
+                child: _calculateAll(),
+              ),
+            ),
+
+          ]),
           Padding(
             padding: const EdgeInsets.fromLTRB(100, 20, 100, 20),
             child: Center(child: _listView()),
-          ),
-          Center(
-            child: Padding(
-              padding: const EdgeInsets.all(20),
-              child: _calculateAll(),
-            ),
           ),
           _addResult(),
         ]),
@@ -74,6 +84,23 @@ class _BundleCalculatorState extends State<BundleCalculator> {
             _countFields.add(countField);
           });
         });
+  }
+
+  Widget _deleteTitle() {
+    return FilledButton(
+      child: const Text('Usuń przekroje'),
+      onPressed: () {
+        final group = _GroupControllers();
+        final dimField = _generateTextBox(group.dim, "Przekrój");
+        final countField = _generateTextBox(group.count, "Ilość przewodów");
+
+        setState(() {
+          _groupControllers.removeLast();
+          _dimFields.removeLast();
+          _countFields.removeLast();
+        });
+      },
+    );
   }
 
   Widget _addResult() {

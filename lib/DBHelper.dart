@@ -16,7 +16,7 @@ class DatabaseHelper {
   static const columnNumber = 'number';
   static const columnName = 'name';
 
-  // make this a singleton class
+  //singleton class
   DatabaseHelper._privateConstructor();
 
   static final DatabaseHelper instance = DatabaseHelper._privateConstructor();
@@ -27,7 +27,7 @@ class DatabaseHelper {
 
   Future<Database> get database async => _database ??= await _initDatabase();
 
-  // this opens the database (and creates it if it doesn't exist)
+  // opens the database and creates it if db doesn't exist
   _initDatabase() async {
     sqfliteFfiInit();
     var databaseFactory = databaseFactoryFfi;
@@ -43,7 +43,7 @@ class DatabaseHelper {
             version: _databaseVersion, onCreate: _onCreate));
   }
 
-  // SQL code to create the database table
+  // create the database table
   Future _onCreate(Database db, int version) async {
     await db.execute('''
           CREATE TABLE $table (
@@ -54,7 +54,7 @@ class DatabaseHelper {
           );''');
   }
 
-  // Helper methods
+
 
   // Inserts a row in the database where each key in the Map is a column name
   // and the value is the column value. The return value is the id of the

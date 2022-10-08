@@ -36,6 +36,7 @@ class _MainNavState extends State<MainNav> {
             PaneItem(
                 icon: const Icon(FluentIcons.database_view),
                 title: const Text("Ustawienia")),
+
           ]),
       content: NavigationBody(
         index: _currentPage,
