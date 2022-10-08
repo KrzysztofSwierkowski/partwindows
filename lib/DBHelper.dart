@@ -6,8 +6,6 @@ import 'dart:io' as io;
 import 'package:partwindows/Settings.dart';
 
 class DatabaseHelper {
-
-
   static const _databaseName = "Part.db";
   static const _databaseVersion = 1;
 
@@ -34,7 +32,7 @@ class DatabaseHelper {
     sqfliteFfiInit();
     var databaseFactory = databaseFactoryFfi;
 
-     String path = "part.db";
+    String path = "part.db";
     //var db = await databaseFactory.openDatabase(path);
 
     io.Directory documentsDirectory = await getApplicationDocumentsDirectory();
@@ -108,5 +106,4 @@ class DatabaseHelper {
     Database db = await instance.database;
     return await db.query(table);
   }
-
 }

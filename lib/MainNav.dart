@@ -1,11 +1,11 @@
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:partwindows/mainui.dart';
+import 'package:partwindows/PartDB.dart';
 import 'package:partwindows/BundleCalculator.dart';
 import 'package:partwindows/Settings.dart';
 import 'read_data.dart';
 
 class MainNav extends StatefulWidget {
-  const MainNav({ Key? key }) : super(key: key);
+  const MainNav({Key? key}) : super(key: key);
 
   @override
   State<MainNav> createState() => _MainNavState();
@@ -23,36 +23,29 @@ class _MainNavState extends State<MainNav> {
           onChanged: (i) => setState(() => _currentPage = i),
           items: <NavigationPaneItem>[
             PaneItem(
-                icon: const Icon(FluentIcons.home),
-                title: const Text("Start")
-            ),
+                icon: const Icon(FluentIcons.home), title: const Text("Start")),
             PaneItem(
                 icon: const Icon(FluentIcons.database),
-                title: const Text("Wszystkie rekordy z bazy danych")
-            ),
+                title: const Text("Wszystkie rekordy z bazy danych")),
             PaneItem(
                 icon: const Icon(FluentIcons.calculated_table),
-                title: const Text("Przekrój wiązki")
-            ),
+                title: const Text("Przekrój wiązki")),
             PaneItem(
                 icon: const Icon(FluentIcons.database_view),
-                title: const Text("Baza Części")
-            ),
+                title: const Text("Baza Części")),
             PaneItem(
                 icon: const Icon(FluentIcons.database_view),
-                title: const Text("Ustawienia")
-            ),
-          ]
-      ),
-
+                title: const Text("Ustawienia")),
+          ]),
       content: NavigationBody(
         index: _currentPage,
-        transitionBuilder: (child, animation) => EntrancePageTransition(animation: animation, child: child),
+        transitionBuilder: (child, animation) =>
+            EntrancePageTransition(animation: animation, child: child),
         children: const <Widget>[
           HomePage(),
           ReadData(),
           BundleCalculator(),
-          mainui(),
+          PartDB(),
           Settings(),
         ],
       ),
@@ -60,14 +53,10 @@ class _MainNavState extends State<MainNav> {
   }
 }
 
-
 class HomePage extends StatelessWidget {
-  const HomePage({ Key? key }) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => const Center(child: Text("Aplikacja mająca na celu wsparcie pracy inżyniera"));
+  Widget build(BuildContext context) => const Center(
+      child: Text("Aplikacja mająca na celu wsparcie pracy inżyniera"));
 }
-
-
-
-

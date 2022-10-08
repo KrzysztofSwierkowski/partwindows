@@ -1,6 +1,4 @@
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 
 class BundleCalculator extends StatefulWidget {
   const BundleCalculator({Key? key}) : super(key: key);
@@ -9,12 +7,9 @@ class BundleCalculator extends StatefulWidget {
   State<BundleCalculator> createState() => _BundleCalculatorState();
 }
 
-
-
 class _GroupControllers {
   TextEditingController dim = TextEditingController();
   TextEditingController count = TextEditingController();
-
 
   void dispose() {
     dim.dispose();
@@ -23,10 +18,9 @@ class _GroupControllers {
 }
 
 class _BundleCalculatorState extends State<BundleCalculator> {
-
-  List<_GroupControllers> _groupControllers = [];
-  List<TextBox> _dimFields = [];
-  List<TextBox> _countFields = [];
+  final List<_GroupControllers> _groupControllers = [];
+  final List<TextBox> _dimFields = [];
+  final List<TextBox> _countFields = [];
   String _textString = '0';
 
   @override
@@ -40,31 +34,25 @@ class _BundleCalculatorState extends State<BundleCalculator> {
 
   @override
   Widget build(BuildContext context) => Column(children: <Widget>[
-        Text(
+        const Text(
           'Sekcja liczenia przekroju wiązki',
           style: TextStyle(fontFamily: 'MonteSerrat', fontSize: 24.0),
         ),
         Wrap(children: <Widget>[
-          Container(
-            child: Center(
-              child: Padding(
-                padding: EdgeInsets.all(20),
-                child: _addTitle(),
-              ),
-            ),
-          ),
-          Container(
+          Center(
             child: Padding(
-              padding: EdgeInsets.fromLTRB(100, 20, 100, 20),
-              child: Center(child: _listView()),
+              padding: const EdgeInsets.all(20),
+              child: _addTitle(),
             ),
           ),
-          Container(
-            child: Center(
-              child: Padding(
-                padding: EdgeInsets.all(20),
-                child: _calculateAll(),
-              ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(100, 20, 100, 20),
+            child: Center(child: _listView()),
+          ),
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.all(20),
+              child: _calculateAll(),
             ),
           ),
           _addResult(),
@@ -73,7 +61,7 @@ class _BundleCalculatorState extends State<BundleCalculator> {
 
   Widget _addTitle() {
     return FilledButton(
-        child: Text('Dodaj przekroje'),
+        child: const Text('Dodaj przekroje'),
         onPressed: () {
           final group = _GroupControllers();
 
@@ -91,11 +79,11 @@ class _BundleCalculatorState extends State<BundleCalculator> {
   Widget _addResult() {
     return Container(
       height: 50,
-      margin: EdgeInsets.all(2),
+      margin: const EdgeInsets.all(2),
       child: Center(
         child: Text(
           'Przekrój wiązki: $_textString mm2',
-          style: TextStyle(fontSize: 18),
+          style: const TextStyle(fontSize: 18),
         ),
       ),
     );
@@ -114,7 +102,7 @@ class _BundleCalculatorState extends State<BundleCalculator> {
     final children = [
       for (var i = 0; i < _groupControllers.length; i++)
         Container(
-          margin: EdgeInsets.all(5),
+          margin: const EdgeInsets.all(5),
           child: Column(
             children: [_dimFields[i], _countFields[i]],
           ),
@@ -145,9 +133,8 @@ class _BundleCalculatorState extends State<BundleCalculator> {
 
   Widget _calculateAll() {
     return FilledButton(
-        onPressed: () async {
+      onPressed: () async {
         calculateCross();
-
       },
       child: const Text("OBLICZ"),
     );

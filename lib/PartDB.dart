@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'DBHelper.dart';
 import 'PartModel.dart';
 
-class mainui extends StatefulWidget {
-  const mainui({Key? key}) : super(key: key);
+class PartDB extends StatefulWidget {
+  const PartDB({Key? key}) : super(key: key);
 
   @override
-  State<mainui> createState() => _mainuiState();
+  State<PartDB> createState() => _PartDBState();
 }
 
-class _mainuiState extends State<mainui> {
+class _PartDBState extends State<PartDB> {
   final dbHelper = DatabaseHelper.instance;
 
   init() {}
@@ -32,8 +32,7 @@ class _mainuiState extends State<mainui> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   void _showMessageInScaffold(String message) {
-    ScaffoldMessenger.of(context).showSnackBar( SnackBar(
-
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text(message),
     ));
   }
@@ -45,7 +44,7 @@ class _mainuiState extends State<mainui> {
       child: Scaffold(
         key: _scaffoldKey,
         appBar: AppBar(
-          bottom: TabBar(
+          bottom: const TabBar(
             tabs: [
               Tab(
                 text: 'Dodaj',
@@ -64,7 +63,7 @@ class _mainuiState extends State<mainui> {
               ),
             ],
           ),
-          title: Text('PartBase'),
+          title: const Text('PartBase'),
         ),
         body: TabBarView(
           children: [
@@ -72,37 +71,37 @@ class _mainuiState extends State<mainui> {
               child: Column(
                 children: <Widget>[
                   Container(
-                    padding: EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(10),
                     child: TextField(
                       controller: typeController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: 'Type Part',
                       ),
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(20),
                     child: TextField(
                       controller: nameController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: 'Name Part',
                       ),
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(20),
                     child: TextField(
                       controller: numberController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: 'Name Part',
                       ),
                     ),
                   ),
                   ElevatedButton(
-                    child: Text('Insert Part to the base'),
+                    child: const Text('Dodaj część do bazy danych'),
                     onPressed: () {
                       String name = nameController.text;
                       String type = typeController.text;
@@ -113,46 +112,44 @@ class _mainuiState extends State<mainui> {
                 ],
               ),
             ),
-            Container(
-              child: ListView.builder(
-                padding: const EdgeInsets.all(8),
-                itemCount: part.length + 1,
-                itemBuilder: (BuildContext context, int index) {
-                  if (index == part.length) {
-                    return ElevatedButton(
-                      child: Text('Odśwież'),
-                      onPressed: () {
-                        setState(() {
-                          _queryAll();
-                        });
-                      },
-                    );
-                  }
-                  return Container(
-                    height: 40,
-                    child: Center(
-                      child: Text(
-                          'Id: ${part[index].id} | Numer: ${part[index].number}] | Nazwa: ${part[index].name} | Typ: ${part[index].type}',
-                          style: const TextStyle(fontSize: 18)),
-                    ),
+            ListView.builder(
+              padding: const EdgeInsets.all(8),
+              itemCount: part.length + 1,
+              itemBuilder: (BuildContext context, int index) {
+                if (index == part.length) {
+                  return ElevatedButton(
+                    child: const Text('Odśwież'),
+                    onPressed: () {
+                      setState(() {
+                        _queryAll();
+                      });
+                    },
                   );
-                },
-              ),
+                }
+                return SizedBox(
+                  height: 40,
+                  child: Center(
+                    child: Text(
+                        'Id: ${part[index].id} | Numer: ${part[index].number}] | Nazwa: ${part[index].name} | Typ: ${part[index].type}',
+                        style: const TextStyle(fontSize: 18)),
+                  ),
+                );
+              },
             ),
             Center(
               child: Column(
                 children: <Widget>[
                   Container(
-                    padding: EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(20),
                     height: 100,
                     child: TextField(
                       controller: queryController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: 'Part Name',
                       ),
                       onChanged: (text) {
-                        if (text.length >= 1) {
+                        if (text.isNotEmpty) {
                           setState(() {
                             _query(text);
                           });
@@ -164,7 +161,7 @@ class _mainuiState extends State<mainui> {
                       },
                     ),
                   ),
-                  Container(
+                  SizedBox(
                     height: 300,
                     child: ListView.builder(
                       padding: const EdgeInsets.all(8),
@@ -172,11 +169,11 @@ class _mainuiState extends State<mainui> {
                       itemBuilder: (BuildContext context, int index) {
                         return Container(
                           height: 50,
-                          margin: EdgeInsets.all(2),
+                          margin: const EdgeInsets.all(2),
                           child: Center(
                             child: Text(
                               'ID: ${partByName[index].id}  | Nazwa: ${partByName[index].name}  | Numer: ${partByName[index].number}  | Typ: ${partByName[index].type} ',
-                              style: TextStyle(fontSize: 18),
+                              style: const TextStyle(fontSize: 18),
                             ),
                           ),
                         );
@@ -190,40 +187,40 @@ class _mainuiState extends State<mainui> {
               child: Column(
                 children: <Widget>[
                   Container(
-                    padding: EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(20),
                     child: TextField(
                       controller: idUpdateController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: 'Part ID',
                       ),
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(20),
                     child: TextField(
                       controller: nameUpdateController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: 'Part Name',
                       ),
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(20),
                     child: TextField(
                       controller: numberUpdateController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: 'Part Number',
                       ),
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(20),
                     child: TextField(
                       controller: typeUpdateController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: 'Part Type',
                       ),
@@ -237,7 +234,7 @@ class _mainuiState extends State<mainui> {
                       String type = typeUpdateController.text;
                       _update(id, name, number, type);
                     },
-                    child: Text('Update Part'),
+                    child: const Text('Update Part'),
                   ),
                 ],
               ),
@@ -246,10 +243,10 @@ class _mainuiState extends State<mainui> {
               child: Column(
                 children: <Widget>[
                   Container(
-                    padding: EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(20),
                     child: TextField(
                       controller: idDeleteController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: 'Part id',
                       ),
@@ -260,7 +257,7 @@ class _mainuiState extends State<mainui> {
                       int id = int.parse(idDeleteController.text);
                       _delete(id);
                     },
-                    child: Text('Delete Part'),
+                    child: const Text('Delete Part'),
                   ),
                 ],
               ),
@@ -291,7 +288,9 @@ class _mainuiState extends State<mainui> {
   _queryAll() async {
     final allRows = await dbHelper.queryAllRows();
     part.clear();
-    allRows.forEach((row) => part.add(Part.fromMap(row)));
+    for (var row in allRows) {
+      part.add(Part.fromMap(row));
+    }
     _showMessageInScaffold('Gotowe !');
     setState(() {});
   }
@@ -299,7 +298,9 @@ class _mainuiState extends State<mainui> {
   _query(name) async {
     final allRows = await dbHelper.queryRows(name);
     partByName.clear();
-    allRows.forEach((row) => partByName.add(Part.fromMap(row)));
+    for (var row in allRows) {
+      partByName.add(Part.fromMap(row));
+    }
   }
 
   _update(id, type, number, name) async {

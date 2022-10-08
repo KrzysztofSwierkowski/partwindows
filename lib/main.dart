@@ -1,10 +1,6 @@
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:flutter/material.dart';
 import 'package:partwindows/MainNav.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
-
-
-
 
 Future<void> main() async {
   // Init ffi loader if needed.
@@ -19,14 +15,11 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
     return const FluentApp(
       home: MainNav(),
       title: 'PartBase',
-
-
     );
   }
 }
