@@ -3,17 +3,20 @@ import 'package:path_provider/path_provider.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:sqflite/sqflite.dart';
 import 'dart:io' as io;
+import 'package:partwindows/Settings.dart';
 
 class DatabaseHelper {
+
+
   static const _databaseName = "Part.db";
-  static final _databaseVersion = 1;
+  static const _databaseVersion = 1;
 
-  static final table = 'part';
+  static const table = 'part';
 
-  static final columnId = 'id';
-  static final columnType = 'type';
-  static final columnNumber = 'number';
-  static final columnName = 'name';
+  static const columnId = 'id';
+  static const columnType = 'type';
+  static const columnNumber = 'number';
+  static const columnName = 'name';
 
   // make this a singleton class
   DatabaseHelper._privateConstructor();
