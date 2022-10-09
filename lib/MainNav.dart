@@ -68,7 +68,7 @@ class _MainNavState extends State<MainNav> {
                     body: const DeletePart(),
                   ),
                 ],
-                body: const PartDB()),
+                body: const PartBase()),
             PaneItem(
               icon: const Icon(FluentIcons.settings),
               title: const Text("Ustawienia"),
@@ -85,4 +85,11 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => const Center(
       child: Text("Aplikacja mająca na celu wsparcie pracy inżyniera"));
+}
+class PartBase extends StatelessWidget {
+  const PartBase({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) => const Center(
+      child: Text("Baza danych części"));
 }
