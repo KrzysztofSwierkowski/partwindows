@@ -1,3 +1,5 @@
+import 'package:partwindows/Read_Data.dart';
+
 import 'PartModel.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
@@ -54,8 +56,6 @@ class DatabaseHelper {
           );''');
   }
 
-
-
   // Inserts a row in the database where each key in the Map is a column name
   // and the value is the column value. The return value is the id of the
   // inserted row.
@@ -90,16 +90,16 @@ class DatabaseHelper {
   // column values will be used to update the row.
   Future<int> update(Part part) async {
     Database db = await instance.database;
-    int id = part.toMap()['id'];
-    return await db
-        .update(table, part.toMap(), where: '$columnId = ?', whereArgs: [id]);
+    var name = part.toMap()['name'];
+    return await db.update(table, part.toMap(),
+        where: '$columnName = ?', whereArgs: [name]);
   }
 
   // Deletes the row specified by the id. The number of affected rows is
   // returned. This should be 1 as long as the row exists.
-  Future<int> delete(int id) async {
+  Future<int> delete(String name) async {
     Database db = await instance.database;
-    return await db.delete(table, where: '$columnId = ?', whereArgs: [id]);
+    return await db.delete(table, where: '$columnName = ?', whereArgs: [name]);
   }
 
   Future<List<Map<String, dynamic>>> allrecords() async {

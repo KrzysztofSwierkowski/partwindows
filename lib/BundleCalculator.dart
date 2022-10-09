@@ -1,5 +1,4 @@
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:fluent_ui/fluent_ui.dart';
 
 class BundleCalculator extends StatefulWidget {
   const BundleCalculator({Key? key}) : super(key: key);

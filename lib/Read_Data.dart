@@ -1,5 +1,5 @@
 import 'dart:core';
-import 'package:flutter/material.dart';
+import 'package:fluent_ui/fluent_ui.dart';
 import 'DBHelper.dart';
 import 'PartModel.dart';
 
@@ -35,48 +35,39 @@ class ReadDataState extends State<ReadData> {
             Table(
                 border: TableBorder.all(width: 1, color: Colors.black),
                 columnWidths: const <int, TableColumnWidth>{
-              0: IntrinsicColumnWidth(),
-              1: FlexColumnWidth(),
-              2: FlexColumnWidth(),
-              3: FlexColumnWidth(),
-            },
+                  0: FlexColumnWidth(),
+                  1: FlexColumnWidth(),
+                  2: FlexColumnWidth(),
+                },
                 children: [
-              TableRow(children: [
-                Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: Column(children: const [
-                    Text('ID',
-                        style: TextStyle(fontSize: 8),
-                        textAlign: TextAlign.center),
+                  TableRow(children: [
+                    Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Column(children: const [
+                        Text('NAME', textAlign: TextAlign.center),
+                      ]),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Column(children: const [
+                        Text('NUMBER', textAlign: TextAlign.center),
+                      ]),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Column(children: const [
+                        Text('TYPE', textAlign: TextAlign.center),
+                      ]),
+                    ),
                   ]),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: Column(children: const [
-                    Text('NAME', textAlign: TextAlign.center),
-                  ]),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: Column(children: const [
-                    Text('NUMBER', textAlign: TextAlign.center),
-                  ]),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: Column(children: const [
-                    Text('TYPE', textAlign: TextAlign.center),
-                  ]),
-                ),
-              ]),
-            ]),
+                ]),
             Table(
               border: TableBorder.all(width: 1, color: Colors.black),
               columnWidths: const <int, TableColumnWidth>{
-                0: IntrinsicColumnWidth(),
+                0: FlexColumnWidth(),
                 1: FlexColumnWidth(),
                 2: FlexColumnWidth(),
-                3: FlexColumnWidth(),
+                // 3: IntrinsicColumnWidth(),
               },
               children: List<TableRow>.generate(
                 part.length,
@@ -84,11 +75,11 @@ class ReadDataState extends State<ReadData> {
                   final partB = part[index];
 
                   return TableRow(children: [
-                    Padding(
-                      padding: const EdgeInsets.all(5.0),
-                      child: Text(partB.id.toString(),
-                          textAlign: TextAlign.center),
-                    ),
+                    // Padding(
+                    //   padding: const EdgeInsets.all(5.0),
+                    //   child: Text(partB.id.toString(),
+                    //       textAlign: TextAlign.center),
+                    // ),
                     Padding(
                       padding: const EdgeInsets.all(5.0),
                       child: Text(partB.name, textAlign: TextAlign.center),
@@ -106,7 +97,7 @@ class ReadDataState extends State<ReadData> {
                 growable: false,
               ),
             ),
-            TextButton(
+            FilledButton(
               child: const Text('Pobierz Dane'),
               onPressed: () {
                 setState(() {

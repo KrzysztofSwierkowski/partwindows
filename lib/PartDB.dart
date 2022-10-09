@@ -130,7 +130,7 @@ class _PartDBState extends State<PartDB> {
                   height: 40,
                   child: Center(
                     child: Text(
-                        'Id: ${part[index].id} | Numer: ${part[index].number}] | Nazwa: ${part[index].name} | Typ: ${part[index].type}',
+                        'Numer: ${part[index].number}] | Nazwa: ${part[index].name} | Typ: ${part[index].type}',
                         style: const TextStyle(fontSize: 18)),
                   ),
                 );
@@ -172,7 +172,7 @@ class _PartDBState extends State<PartDB> {
                           margin: const EdgeInsets.all(2),
                           child: Center(
                             child: Text(
-                              'ID: ${partByName[index].id}  | Nazwa: ${partByName[index].name}  | Numer: ${partByName[index].number}  | Typ: ${partByName[index].type} ',
+                              'Nazwa: ${partByName[index].name}  | Numer: ${partByName[index].number}  | Typ: ${partByName[index].type} ',
                               style: const TextStyle(fontSize: 18),
                             ),
                           ),
@@ -304,7 +304,7 @@ class _PartDBState extends State<PartDB> {
   }
 
   _update(id, type, number, name) async {
-    Part part = Part(id, type, number, name);
+    Part part = Part(type, number, name);
     final rowsAffected = await dbHelper.update(part);
     _showMessageInScaffold('Część $rowsAffected została zaktualizowana');
   }
