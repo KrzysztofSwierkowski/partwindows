@@ -1,7 +1,6 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:partwindows/AddPart.dart';
 import 'package:partwindows/ChangePart.dart';
-import 'package:partwindows/PartDB.dart';
 import 'package:partwindows/BundleCalculator.dart';
 import 'package:partwindows/Settings.dart';
 import 'package:partwindows/SearchPart.dart';

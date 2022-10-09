@@ -1,29 +1,25 @@
-import 'package:partwindows/Read_Data.dart';
-
+import 'package:partwindows/Settings.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'PartModel.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:sqflite/sqflite.dart';
 import 'dart:io' as io;
-import 'package:partwindows/Settings.dart';
 
 class DatabaseHelper {
-  static const _databaseName = "Part.db";
   static const _databaseVersion = 1;
-
   static const table = 'part';
-
   static const columnId = 'id';
   static const columnType = 'type';
   static const columnNumber = 'number';
   static const columnName = 'name';
+  var Readpath;
 
-  //singleton class
+  //singleton
   DatabaseHelper._privateConstructor();
 
   static final DatabaseHelper instance = DatabaseHelper._privateConstructor();
 
-  // only have a single app-wide reference to the database
 
   static Database? _database;
 
@@ -31,14 +27,14 @@ class DatabaseHelper {
 
   // opens the database and creates it if db doesn't exist
   _initDatabase() async {
+    final prefs = await SharedPreferences.getInstance();
+    final Readpath = prefs.getString('path2') ?? 0;
+    String path = Readpath.toString();
     sqfliteFfiInit();
     var databaseFactory = databaseFactoryFfi;
-
-    String path = "part.db";
-    //var db = await databaseFactory.openDatabase(path);
-
-    io.Directory documentsDirectory = await getApplicationDocumentsDirectory();
-    //String path = join(documentsDirectory.path, "part.db");
+    print("Creating database: $path");
+    await databaseFactory.openDatabase(path);
+    await getApplicationDocumentsDirectory();
 
     return await databaseFactory.openDatabase(path,
         options: OpenDatabaseOptions(
@@ -106,4 +102,5 @@ class DatabaseHelper {
     Database db = await instance.database;
     return await db.query(table);
   }
+
 }

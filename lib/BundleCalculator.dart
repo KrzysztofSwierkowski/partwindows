@@ -21,7 +21,7 @@ class _BundleCalculatorState extends State<BundleCalculator> {
   final List<_GroupControllers> _groupControllers = [];
   final List<TextBox> _dimFields = [];
   final List<TextBox> _countFields = [];
-  String _textString = '0';
+  String _resultBundle = '0';
 
   @override
   void dispose() {
@@ -89,9 +89,6 @@ class _BundleCalculatorState extends State<BundleCalculator> {
     return FilledButton(
       child: const Text('Usuń przekroje'),
       onPressed: () {
-        final group = _GroupControllers();
-        final dimField = _generateTextBox(group.dim, "Przekrój");
-        final countField = _generateTextBox(group.count, "Ilość przewodów");
 
         setState(() {
           _groupControllers.removeLast();
@@ -108,7 +105,7 @@ class _BundleCalculatorState extends State<BundleCalculator> {
       margin: const EdgeInsets.all(2),
       child: Center(
         child: Text(
-          'Przekrój wiązki: $_textString mm2',
+          'Przekrój wiązki: $_resultBundle mm2',
           style: const TextStyle(fontSize: 18),
         ),
       ),
@@ -152,7 +149,7 @@ class _BundleCalculatorState extends State<BundleCalculator> {
     }
 
     setState(() {
-      _textString = finalResult.toString();
+      _resultBundle = finalResult.toString();
     });
     return finalResult;
   }

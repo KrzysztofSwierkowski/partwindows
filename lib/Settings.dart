@@ -1,6 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Settings extends StatefulWidget {
   const Settings({Key? key}) : super(key: key);
@@ -10,21 +11,21 @@ class Settings extends StatefulWidget {
 }
 
 class _SettingsState extends State<Settings> {
-  var path = '';
+var path2 ;
 
   Future<String?> _pickFile() async {
+
     FilePickerResult? result = await FilePicker.platform.pickFiles(
         dialogTitle: 'Wybierz plik bazy danych',
         type: FileType.custom,
         allowedExtensions: ['db']);
 
-    // if(result == null) return;
+     if(result == null) return null;
 
-    PlatformFile? file = result?.files.single;
-    if (kDebugMode) {
-      print(file?.path);
-    }
-    return file?.path;
+    PlatformFile? file = result.files.single;
+
+
+    return path2 = file?.path;
   }
 
   @override
@@ -37,8 +38,11 @@ class _SettingsState extends State<Settings> {
                 alignment: Alignment.topLeft,
                 child: FilledButton(
                   child: const Text('Lokalizacja bazy danych'),
-                  onPressed: () {
-                    path = _pickFile().toString();
+                  onPressed: () async {
+                    path2 = _pickFile().toString();
+                    final prefs = await SharedPreferences.getInstance();
+                    prefs.setString('path2',path2);
+
                   },
                 ),
               ),
