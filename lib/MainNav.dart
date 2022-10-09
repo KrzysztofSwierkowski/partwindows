@@ -32,11 +32,6 @@ class _MainNavState extends State<MainNav> {
                 icon: const Icon(FluentIcons.home),
                 title: const Text("Start"),
                 body: const HomePage()),
-            PaneItem(
-              icon: const Icon(FluentIcons.calculated_table),
-              title: const Text("Przekrój wiązki"),
-              body: const BundleCalculator(),
-            ),
             PaneItemExpander(
                 icon: const Icon(FluentIcons.database_view),
                 title: const Text("Baza Części"),
@@ -69,6 +64,11 @@ class _MainNavState extends State<MainNav> {
                 ],
                 body: const PartBase()),
             PaneItem(
+              icon: const Icon(FluentIcons.calculated_table),
+              title: const Text("Przekrój wiązki"),
+              body: const BundleCalculator(),
+            ),
+            PaneItem(
               icon: const Icon(FluentIcons.settings),
               title: const Text("Ustawienia"),
               body: const Settings(),
@@ -85,10 +85,11 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) => const Center(
       child: Text("Aplikacja mająca na celu wsparcie pracy inżyniera"));
 }
+
 class PartBase extends StatelessWidget {
   const PartBase({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => const Center(
-      child: Text("Baza danych części"));
+  Widget build(BuildContext context) =>
+      const Center(child: Text("Baza danych części"));
 }
