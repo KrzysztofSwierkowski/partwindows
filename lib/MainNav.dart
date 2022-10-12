@@ -1,11 +1,11 @@
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:partwindows/AddPart.dart';
-import 'package:partwindows/ChangePart.dart';
-import 'package:partwindows/BundleCalculator.dart';
-import 'package:partwindows/Settings.dart';
-import 'package:partwindows/SearchPart.dart';
-import 'package:partwindows/DeletePart.dart';
-import 'package:partwindows/read_data.dart';
+import '/database/AddPart.dart';
+import '/database/ChangePart.dart';
+import '/BundleCalculator.dart';
+import '/Settings.dart';
+import '/database/SearchPart.dart';
+import '/database/DeletePart.dart';
+import '/database/read_data.dart';
 
 class MainNav extends StatefulWidget {
   const MainNav({Key? key}) : super(key: key);

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'DBHelper.dart';
+import '/database/DBHelper.dart';
 import 'PartModel.dart';
 
 class PartDB extends StatefulWidget {

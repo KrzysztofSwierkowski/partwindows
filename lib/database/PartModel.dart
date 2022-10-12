@@ -1,4 +1,4 @@
-import 'DBHelper.dart';
+import '/database/DBHelper.dart';
 
 class Part {
   // late int? id; // id of the part

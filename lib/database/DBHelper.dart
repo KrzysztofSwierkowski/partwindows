@@ -1,10 +1,9 @@
-import 'package:partwindows/Settings.dart';
+import '/Settings.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'PartModel.dart';
+import '/database/PartModel.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:sqflite/sqflite.dart';
-import 'dart:io' as io;
 
 class DatabaseHelper {
   static const _databaseVersion = 1;
