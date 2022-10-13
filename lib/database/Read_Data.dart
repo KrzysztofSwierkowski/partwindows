@@ -61,6 +61,10 @@ class ReadDataState extends State<ReadData> {
                     ),
                   ]),
                 ]),
+    Expanded(
+    child: SingleChildScrollView(
+    child: Column(
+    children: [
             Table(
               border: TableBorder.all(width: 1, color: Colors.black),
               columnWidths: const <int, TableColumnWidth>{
@@ -75,11 +79,6 @@ class ReadDataState extends State<ReadData> {
                   final partB = part[index];
 
                   return TableRow(children: [
-                    // Padding(
-                    //   padding: const EdgeInsets.all(5.0),
-                    //   child: Text(partB.id.toString(),
-                    //       textAlign: TextAlign.center),
-                    // ),
                     Padding(
                       padding: const EdgeInsets.all(5.0),
                       child: Text(partB.name, textAlign: TextAlign.center),
@@ -97,6 +96,7 @@ class ReadDataState extends State<ReadData> {
                 growable: false,
               ),
             ),
+            ],),),),
             FilledButton(
               child: const Text('Pobierz Dane'),
               onPressed: () {

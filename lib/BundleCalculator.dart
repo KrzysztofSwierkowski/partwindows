@@ -38,34 +38,39 @@ class _BundleCalculatorState extends State<BundleCalculator> {
           'Sekcja liczenia przekroju wiązki',
           style: TextStyle(fontFamily: 'MonteSerrat', fontSize: 24.0),
         ),
-        Wrap(children: <Widget>[
-          Row(children: <Widget>[
-            Center(
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(5,10,0,10),
-                child: _addTitle(),
-              ),
-            ),
-            Center(
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(5,10,0,10),
-                child: _deleteTitle(),
-              ),
-            ),
-            Center(
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(5,10,0,10),
-                child: _calculateAll(),
-              ),
-            ),
-
-          ]),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(100, 20, 100, 20),
-            child: Center(child: _listView()),
+        Expanded(
+          child: SingleChildScrollView(
+            child: Column(children: [
+              Wrap(children: <Widget>[
+                Row(children: <Widget>[
+                  Center(
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(5, 10, 0, 10),
+                      child: _addTitle(),
+                    ),
+                  ),
+                  Center(
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(5, 10, 0, 10),
+                      child: _deleteTitle(),
+                    ),
+                  ),
+                  Center(
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(5, 10, 0, 10),
+                      child: _calculateAll(),
+                    ),
+                  ),
+                ]),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(100, 20, 100, 20),
+                  child: Center(child: _listView()),
+                ),
+                _addResult(),
+              ]),
+            ]),
           ),
-          _addResult(),
-        ]),
+        ),
       ]);
 
   Widget _addTitle() {
@@ -89,7 +94,6 @@ class _BundleCalculatorState extends State<BundleCalculator> {
     return FilledButton(
       child: const Text('Usuń przekroje'),
       onPressed: () {
-
         setState(() {
           _groupControllers.removeLast();
           _dimFields.removeLast();
