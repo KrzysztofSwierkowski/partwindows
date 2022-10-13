@@ -30,18 +30,18 @@ class _SearchPartState extends State<SearchPart> {
             height: 100,
             child: TextBox(
               controller: queryController,
-              header: 'Nazwa',
-              placeholder: 'Nazwa Części',
+              header: 'Nazwa / Numer',
+              placeholder: 'Wpisz nazwę bądź numer części',
               expands: false,
             ),
           ),
           Container(
             padding: const EdgeInsets.all(20),
             child: FilledButton(
-              child: const Text('Pobierz Dane'),
+              child: const Text('Szukaj'),
               onPressed: () {
                 setState(() {
-                  _query(queryController.text);
+                  _queryName(queryController.text);
                 });
               },
             ),
@@ -70,11 +70,13 @@ class _SearchPartState extends State<SearchPart> {
     );
   }
 
-  _query(name) async {
-    final allRows = await dbHelper.queryRows(name);
+  _queryName(name) async {
+    final allRows = await dbHelper.queryRowsName(name);
     partByName.clear();
     for (var row in allRows) {
       partByName.add(Part.fromMap(row));
     }
   }
 }
+//todo should be a functionality  that search result by number and associated parts
+//todo change style view of result to table view

@@ -296,7 +296,7 @@ class _PartDBState extends State<PartDB> {
   }
 
   _query(name) async {
-    final allRows = await dbHelper.queryRows(name);
+    final allRows = await dbHelper.queryRowsName(name);
     partByName.clear();
     for (var row in allRows) {
       partByName.add(Part.fromMap(row));

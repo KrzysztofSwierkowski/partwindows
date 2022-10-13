@@ -48,3 +48,4 @@ class _DeletePartState extends State<DeletePart> {
     final rowsDeleted = await dbHelper.delete(name);
   }
 }
+//todo delete parts by number, association ect.

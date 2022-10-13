@@ -68,10 +68,11 @@ class DatabaseHelper {
   }
 
   // Queries rows based on the argument received
-  Future<List<Map<String, dynamic>>> queryRows(name) async {
+  Future<List<Map<String, dynamic>>> queryRowsName(name) async {
     Database db = await instance.database;
-    return await db.query(table, where: "$columnName LIKE '%$name%'");
+    return await db.query(table, where: "$columnName LIKE '%$name%' or $columnNumber LIKE '%$name%'");
   }
+
 
   // All of the methods (insert, query, update, delete) can also be done using
   // raw SQL commands. This method uses a raw query to give the row count.
