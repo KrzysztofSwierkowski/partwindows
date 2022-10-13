@@ -1,7 +1,7 @@
 import 'dart:core';
 import 'package:fluent_ui/fluent_ui.dart';
-import 'DBHelper.dart';
-import '/database/PartModel.dart';
+import 'package:partwindows/database/DBHelper.dart';
+import 'package:partwindows/database/PartModel.dart';
 
 final dbHelper = DatabaseHelper.instance;
 List<Part> part = [];

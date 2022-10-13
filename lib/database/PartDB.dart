@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '/database/DBHelper.dart';
-import 'PartModel.dart';
+import 'package:partwindows/database/DBHelper.dart';
+import 'package:partwindows/database/PartModel.dart';
 
 class PartDB extends StatefulWidget {
   const PartDB({Key? key}) : super(key: key);

@@ -1,6 +1,6 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:partwindows/database/DBHelper.dart';
-import '/database/PartModel.dart';
+import 'package:partwindows/database/PartModel.dart';
 
 class DeletePart extends StatefulWidget {
   const DeletePart({Key? key}) : super(key: key);

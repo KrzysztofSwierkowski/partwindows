@@ -1,6 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:partwindows/database/DBHelper.dart';
-import '/database/PartModel.dart';
+import 'package:partwindows/database/PartModel.dart';
+
 
 class SearchPart extends StatefulWidget {
   const SearchPart({Key? key}) : super(key: key);

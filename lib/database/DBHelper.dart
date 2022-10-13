@@ -1,6 +1,6 @@
-import '/Settings.dart';
+import 'package:partwindows/Settings.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '/database/PartModel.dart';
+import 'package:partwindows/database/PartModel.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:sqflite/sqflite.dart';

@@ -2,7 +2,7 @@ import 'package:fluent_ui/fluent_ui.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '/database/NewDatabase.dart';
+import 'package:partwindows/database/NewDatabase.dart';
 
 class Settings extends StatefulWidget {
   const Settings({Key? key}) : super(key: key);

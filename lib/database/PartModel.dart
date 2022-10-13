@@ -1,4 +1,4 @@
-import '/database/DBHelper.dart';
+import 'package:partwindows/database/DBHelper.dart';
 
 class Part {
   // late int? id; // id of the part
