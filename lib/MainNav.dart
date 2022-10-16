@@ -7,7 +7,6 @@ import 'package:partwindows/Settings.dart';
 import 'package:partwindows/database/SearchPart.dart';
 import 'package:partwindows/database/DeletePart.dart';
 
-
 class MainNav extends StatefulWidget {
   const MainNav({Key? key}) : super(key: key);
 
@@ -79,12 +78,36 @@ class _MainNavState extends State<MainNav> {
   }
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => const Center(
-      child: Text("Aplikacja mająca na celu wsparcie pracy inżyniera"));
+  State<StatefulWidget> createState() => HomePageState();
+}
+
+class HomePageState extends State<HomePage> {
+  double opacityLevel = 1.0;
+
+  void _changeOpacity() {
+    setState(() => opacityLevel = opacityLevel == 0 ? 1.0 : 0.0);
+  }
+
+  @override
+  Widget build(BuildContext context) => Column(children: <Widget>[
+    const Center(child: Text('Home')),
+        Center(
+            child: AnimatedOpacity(
+          opacity: opacityLevel ,
+          duration: const Duration(seconds: 3),
+          child: Image.asset(
+            'lib/assets/background.jpg',
+            scale: 15,
+          ),
+        )),
+
+
+      ]);
+
 }
 
 class PartBase extends StatelessWidget {
