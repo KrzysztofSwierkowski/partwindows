@@ -12,10 +12,10 @@ class Settings extends StatefulWidget {
 }
 
 class _SettingsState extends State<Settings> {
-  var path2;
-  late NewDatabase _database;
+  String path2 = "";
+  NewDatabase _database = NewDatabase();
 
-  Future<String?> _pickFile() async {
+  _pickFile() async {
     FilePickerResult? result = await FilePicker.platform.pickFiles(
         dialogTitle: 'Wybierz plik bazy danych',
         type: FileType.custom,
@@ -23,9 +23,9 @@ class _SettingsState extends State<Settings> {
 
     if (result == null) return null;
 
-    PlatformFile? file = result.files.single;
+    String path2 = result.files.single.path!;
 
-    return path2 = file.path;
+    return path2;
   }
 
   @override
@@ -42,9 +42,9 @@ class _SettingsState extends State<Settings> {
                     child: FilledButton(
                       child: const Text('Lokalizacja bazy danych'),
                       onPressed: () async {
-                        path2 = _pickFile().toString();
+                        _pickFile().then((path2) async {
                         final prefs = await SharedPreferences.getInstance();
-                        prefs.setString('path2', path2);
+                        prefs.setString('path2', path2);});
                       },
                     ),
                   ),

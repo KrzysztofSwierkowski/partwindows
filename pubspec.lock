@@ -63,7 +63,7 @@ packages:
       name: file_picker
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "5.2.1"
+    version: "5.2.5"
   fluent_ui:
     dependency: "direct main"
     description:
